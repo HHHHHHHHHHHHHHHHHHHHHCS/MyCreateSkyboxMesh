@@ -133,10 +133,11 @@ public class CreateSkybox
         destArray.Add(v1);
         destArray.Add(v12);
         destArray.Add(v13);
-        destArray.Add(v12);
 
+        destArray.Add(v12);
         destArray.Add(v2);
         destArray.Add(v23);
+
         destArray.Add(v23);
         destArray.Add(v13);
         destArray.Add(v12);
@@ -210,6 +211,7 @@ public class CreateSkybox
             destArray.Add(v12);
             destArray.Add(va);
             destArray.Add(vb);
+
             destArray.Add(v13);
             destArray.Add(v12);
             destArray.Add(vb);
@@ -219,6 +221,7 @@ public class CreateSkybox
             destArray.Add(v13);
             destArray.Add(v12);
             destArray.Add(va);
+
             destArray.Add(v13);
             destArray.Add(va);
             destArray.Add(vb);
