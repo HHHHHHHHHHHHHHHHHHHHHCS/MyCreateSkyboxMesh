@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
 using UnityEditor;
 using UnityEngine;
 
@@ -50,10 +49,25 @@ public class CreateSkybox
     [MenuItem("Skybox/Create")]
     public static void DoMain()
     {
-        new CreateSkybox().Create();
+        var skyboxVertList = new CreateSkybox().Create();
+
+        var vertList = from vert in skyboxVertList select new Vector3(vert.x, vert.y, vert.z);
+
+        int[] indexArray = new int[vertList.Count()];
+
+        for (int i = 0; i < indexArray.Length; ++i)
+        {
+            indexArray[i] = i;
+        }
+
+        Mesh mesh = new Mesh();
+        mesh.vertices = vertList.ToArray();
+        mesh.triangles = indexArray;
+
+        AssetDatabase.CreateAsset(mesh,"Assets/SkyboxMesh.asset");
     }
 
-    public void Create()
+    public List<CubemapSkyboxVertex> Create()
     {
         //8 * 3  * 4 * 4 * 4 = 1536
         int cap = 8 * 3 * (int) Mathf.Pow(4, NUM_FULL_SUBDIVISIONS);
@@ -100,10 +114,11 @@ public class CreateSkybox
                     SubdivideYOnly(ref vData, ref srcData[j], ref srcData[j + 1], ref srcData[j + 2]);
                 }
             }
-
         }
 
         Debug.Log(vData.Count);
+
+        return vData;
     }
 
 
