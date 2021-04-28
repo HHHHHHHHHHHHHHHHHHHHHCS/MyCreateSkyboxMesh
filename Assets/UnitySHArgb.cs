@@ -8,6 +8,7 @@ public class UnitySHArgb
     //SphericalHarmonicsL2.AddDirectionalLight  (0,1,0)
     //SphericalHarmonicsL2.AddDirectionalLight  (0,-1,0)
 
+    // https://forum.unity.com/threads/how-is-light-probe-data-input-into-shaders.475219/
     //    Edit:
     //    Figured out the values.In case anyone else needs this the answer is
     //
